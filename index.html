@@ -1,40 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Página Web</title>
-<link rel="stylesheet" href="estilos.css">
+  <title>Ejercicio 1</title>
 </head>
 <body>
+  <button onclick="verificarEdad()">Verificar edad</button>
 
-<header>
-<h1>Bienvenidos a nuestra página ✨</h1>
-</header>
+  <script>
+    function verificarEdad() {
+      let edad = prompt("Ingrese su edad:");
+      edad = Number(edad); // convertir a número
 
-<nav>
-<ul>
-<li><a href="#">Inicio</a></li>
-<li><a href="#">Sobre nosotras</a></li>
-<li><a href="#">Contacto</a></li>
-</ul>
-</nav>
-
-<main>
-<section>
-<h2>¿Quién somos?</h2>
-<p>Hola! Somos Sol y Laura, somos estudiantes de 3°H y estamos aprendiendo a hacer páginas web 😎</p>
-</section>
-
-<section>
-<h2>Nuestros proyectos</h2>
-<p>Acá irán los links a nuestros proyectos...</p>
-</section>
-</main>
-
-<footer>
-<p>Hecho con 💙 por Sol y Laura - 2025</p>
-</footer>
-
+      if (edad >= 18) {
+        alert("Acceso permitido ✅");
+      } else {
+        alert("Acceso denegado ❌");
+      }
+    }
+  </script>
 </body>
 </html>
