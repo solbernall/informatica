@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Asistencia a la fiesta</title>
+</head>
+<body>
+  <h2>🎉 Confirmación de asistencia a la fiesta de fin de año</h2>
+
+  <label>Nombre:</label>
+  <input type="text" id="nombre" placeholder="Ingresá tu nombre">
+
+  <p>¿Asistirás a la fiesta?</p>
+  <input type="radio" name="asistencia" value="si"> Sí
+  <input type="radio" name="asistencia" value="no"> No
+  <br><br>
+  <button onclick="confirmar()">Enviar</button>
+
+  <p id="mensaje"></p>
+
+  <script>
+    function confirmar() {
+      let nombre = document.getElementById("nombre").value;
+      let respuesta = document.querySelector('input[name="asistencia"]:checked');
+
+      if (!nombre || !respuesta) {
+        document.getElementById("mensaje").innerHTML = "Por favor completá todos los campos.";
+        return;
+      }
+
+      if (respuesta.value === "si") {
+        document.getElementById("mensaje").innerHTML = `Gracias por confirmar, ${nombre}! Nos vemos en la fiesta 🎊`;
+      } else {
+        document.getElementById("mensaje").innerHTML = `Qué pena, ${nombre}! Te vamos a extrañar 😢`;
+      }
+    }
+  </script>
+</body>
+</html>

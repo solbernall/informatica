@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego de adivinanza</title>
+  <script>
+    function jugar() {
+      // Número secreto entre 1 y 10
+      const secreto = Math.floor(Math.random() * 10) + 1;
+
+      const intento = prompt("Adiviná el número secreto (entre 1 y 10):");
+      const numero = Number(intento);
+
+      if (isNaN(numero)) {
+        alert("Ingresá un número válido.");
+        return;
+      }
+
+      if (numero === secreto) {
+        alert("¡Acertaste! 🎉 El número secreto era " + secreto + ".");
+      } else {
+        const pista = numero < secreto ? "más grande" : "más chico";
+        alert("No acertaste. El número secreto era " + secreto + ". Pista: probá un número " + pista + " la próxima.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Juego de adivinanza</h2>
+  <button onclick="jugar()">Jugar</button>
+</body>
+</html>

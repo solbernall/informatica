@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Saludo de bienvenida</title>
+</head>
+<body>
+  <h2>🧑‍🎓 Registro de estudiante</h2>
+
+  <label>Nombre:</label>
+  <input type="text" id="nombre"><br><br>
+
+  <label>Apellido:</label>
+  <input type="text" id="apellido"><br><br>
+
+  <label>Curso:</label>
+  <input type="text" id="curso"><br><br>
+
+  <button onclick="mostrarBienvenida()">Registrar</button>
+
+  <script>
+    function mostrarBienvenida() {
+      let nombre = document.getElementById("nombre").value;
+      let apellido = document.getElementById("apellido").value;
+      let curso = document.getElementById("curso").value;
+
+      if (!nombre || !apellido || !curso) {
+        alert("Por favor completá todos los campos.");
+        return;
+      }
+
+      // Crea una nueva página con el mensaje
+      let nuevaVentana = window.open("", "_blank");
+      nuevaVentana.document.write(`<h2>Bienvenido/a, ${nombre} ${apellido}!</h2>`);
+      nuevaVentana.document.write(`<p>Curso: ${curso}</p>`);
+      nuevaVentana.document.write("<p>¡Esperamos que tengas un gran año! 🎓</p>");
+    }
+  </script>
+</body>
+</html>

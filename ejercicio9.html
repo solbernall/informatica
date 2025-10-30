@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de eventos</title>
+</head>
+<body>
+  <h2>📅 Calculadora de días hasta tu evento</h2>
+
+  <label>Nombre del evento:</label>
+  <input type="text" id="evento" placeholder="Ej: examen, viaje, cumpleaños">
+  <br><br>
+
+  <label>Fecha del evento:</label>
+  <input type="date" id="fecha">
+  <br><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      const nombreEvento = document.getElementById("evento").value;
+      const fechaEvento = document.getElementById("fecha").value;
+      const resultado = document.getElementById("resultado");
+
+      if (!nombreEvento || !fechaEvento) {
+        resultado.innerHTML = "⚠️ Por favor completá todos los campos.";
+        return;
+      }
+
+      const hoy = new Date();
+      const fechaIngresada = new Date(fechaEvento);
+
+      // Calcular diferencia en milisegundos y convertir a días
+      const diferencia = Math.ceil((fechaIngresada - hoy) / (1000 * 60 * 60 * 24));
+
+      if (diferencia > 0) {
+        resultado.innerHTML = `⏳ Faltan ${diferencia} día(s) para ${nombreEvento}.`;
+      } else if (diferencia === 0) {
+        resultado.innerHTML = `🎉 ¡Hoy es el día de ${nombreEvento}!`;
+      } else {
+        resultado.innerHTML = `📅 El evento "${nombreEvento}" ya ocurrió.`;
+      }
+    }
+  </script>
+</body>
+</html>
