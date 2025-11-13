@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San José de Calasanz</title>
+
+  <!-- ESTILOS PARA EL MODAL -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #8b0000;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #8b0000;
+    }
+
+    #jugar-trivia {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    #jugar-trivia button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #8b0b02;
+      color: white;
+      cursor: pointer;
+    }
+
+    #jugar-trivia button:hover {
+      background-color: #8b0500;
+    }
+
+    /* ESTILOS PARA EL MODAL */
+    .modal {
+      display: none;              /* oculto hasta abrir */
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    .modal-contenido {
+      background: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .cerrar {
+      float: right;
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    /* ESTILOS RESULTADO TRIVIA */
+    .correcta {
+      color: green;
+      font-weight: bold;
+    }
+
+    .incorrecta {
+      color: red;
+      font-weight: bold;
+    }
+
+    #resultado {
+      margin-top: 1em;
+    }
+
+    form p {
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+
+    form button[type="submit"] {
+      margin-top: 15px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #8d1000;
+      color: white;
+      cursor: pointer;
+    }
+
+    form button[type="submit"]:hover {
+      background-color: #8b0000;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>San José de Calasanz</h1>
+  </header>
+
+  <main>
+    <!-- SECCIÓN DE INFORMACIÓN (ejemplo, podés cambiar el texto) -->
+    <section id="info-calasanz">
+      <h2>Vida y obra</h2>
+      <p>
+        San José de Calasanz fue el fundador de las Escuelas Pías. Dedicó su vida
+        a la educación de los niños, especialmente los más pobres, uniendo la
+        piedad con las letras.
+      </p>
+      <p>
+        A través de las escuelas gratuitas, buscó que todos pudieran acceder al
+        estudio y al conocimiento de Dios. Su legado sigue presente hoy en la
+        educación escolapia.
+      </p>
+    </section>
+
+    <!-- SECCIÓN PARA JUGAR TRIVIA -->
+    <section id="jugar-trivia">
+      <h2>¿Te animás a poner a prueba tus conocimientos?</h2>
+      <button id="abrirTrivia">Comenzar Trivia</button>
+    </section>
+
+    <!-- MODAL -->
+    <div id="modalTrivia" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar">&times;</span>
+
+        <!-- FORMULARIO DE LA TRIVIA -->
+        <h2>Trivia sobre San José de Calasanz</h2>
+
+        <form id="formTrivia">
+
+          <p><strong>1.</strong> ¿Dónde nació San José de Calasanz?</p>
+          <label><input type="radio" name="p1" value="Madrid"> Madrid</label><br>
+          <label><input type="radio" name="p1" value="Peralta de la Sal"> Peralta de la Sal</label><br>
+          <label><input type="radio" name="p1" value="Roma"> Roma</label><br><br>
+
+          <p><strong>2.</strong> ¿En qué año nació?</p>
+          <label><input type="radio" name="p2" value="1556"> 1556</label><br>
+          <label><input type="radio" name="p2" value="1656"> 1656</label><br>
+          <label><input type="radio" name="p2" value="1756"> 1756</label><br><br>
+
+          <p><strong>3.</strong> ¿Dónde fundó la primera escuela gratuita?</p>
+          <label><input type="radio" name="p3" value="Zaragoza"> Zaragoza</label><br>
+          <label><input type="radio" name="p3" value="Roma"> Roma</label><br>
+          <label><input type="radio" name="p3" value="Barcelona"> Barcelona</label><br><br>
+
+          <p><strong>4.</strong> ¿Qué lema representa su misión educativa?</p>
+          <label><input type="radio" name="p4" value="Fe y razón"> Fe y razón</label><br>
+          <label><input type="radio" name="p4" value="Justicia y amor"> Justicia y amor</label><br>
+          <label><input type="radio" name="p4" value="Piedad y letras"> Piedad y letras</label><br><br>
+
+          <p><strong>5.</strong> ¿Qué día se celebra su festividad?</p>
+          <label><input type="radio" name="p5" value="25 de agosto"> 25 de agosto</label><br>
+          <label><input type="radio" name="p5" value="12 de octubre"> 12 de octubre</label><br>
+          <label><input type="radio" name="p5" value="15 de mayo"> 15 de mayo</label><br><br>
+
+          <button type="submit">Enviar respuestas</button>
+        </form>
+
+        <div id="resultado"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SCRIPT: MODAL + LÓGICA DE TRIVIA -->
+  <script>
+    // --- ABRIR Y CERRAR MODAL ---
+    const modal = document.getElementById("modalTrivia");
+    const btnAbrir = document.getElementById("abrirTrivia");
+    const btnCerrar = document.querySelector(".cerrar");
+
+    btnAbrir.onclick = () => {
+      modal.style.display = "block";
+    };
+
+    btnCerrar.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // --- TRIVIA ---
+    const formTrivia = document.getElementById("formTrivia");
+    const divResultado = document.getElementById("resultado");
+
+    formTrivia.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let puntaje = 0;
+      let salida = "";
+
+      // Función simple para revisar cada pregunta
+      function revisar(num, correcta) {
+        const seleccion = document.querySelector(`input[name="p${num}"]:checked`);
+        if (seleccion) {
+          if (seleccion.value === correcta) {
+            puntaje++;
+            salida += `<p class="correcta">${num}. Correcta ✔️</p>`;
+          } else {
+            salida += `<p class="incorrecta">${num}. Incorrecta ❌ (Correcta: ${correcta})</p>`;
+          }
+        } else {
+          salida += `<p class="incorrecta">${num}. No respondida ❌ (Correcta: ${correcta})</p>`;
+        }
+      }
+
+      // Revisamos las 5 preguntas
+      revisar(1, "Peralta de la Sal");
+      revisar(2, "1556");
+      revisar(3, "Roma");
+      revisar(4, "Piedad y letras");
+      revisar(5, "25 de agosto");
+
+      // Puntaje final
+      salida += `<h4>Puntaje final: ${puntaje} de 5</h4>`;
+
+      // Mensaje final según el puntaje
+      if (puntaje === 5) {
+        salida += "<p>¡Excelente trabajo!</p>";
+      } else if (puntaje >= 3) {
+        salida += "<p>Muy bien, conocés bastante sobre Calasanz.</p>";
+      } else {
+        salida += "<p>Podés repasar un poco más.</p>";
+      }
+
+      // Mostramos el resultado dentro del modal
+      divResultado.innerHTML = salida;
+    });
+  </script>
+
+</body>
+</html>
