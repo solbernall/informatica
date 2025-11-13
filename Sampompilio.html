@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Pompilio María Pirrotti</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color:#137200;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #137200;
+    }
+
+    #jugar-trivia {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    #jugar-trivia button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #137200;
+      color: white;
+      cursor: pointer;
+    }
+
+    #jugar-trivia button:hover {
+      background-color: #137200;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    .modal-contenido {
+      background: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .cerrar {
+      float: right;
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    .correcta {
+      color: green;
+      font-weight: bold;
+    }
+
+    .incorrecta {
+      color: red;
+      font-weight: bold;
+    }
+
+    #resultado {
+      margin-top: 1em;
+    }
+
+    form p {
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+
+    form button[type="submit"] {
+      margin-top: 15px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #137200;
+      color: white;
+      cursor: pointer;
+    }
+
+    form button[type="submit"]:hover {
+      background-color: #137200;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>San Pompilio María Pirrotti</h1>
+  </header>
+
+  <main>
+
+    <!-- INFO DEL SANTO -->
+    <section id="info-pompilio">
+      <h2>Vida y Obra</h2>
+      <p>
+        San Pompilio María Pirrotti nació en Montecalvo Irpino, Italia, en 1710.  
+        Ingresó a las Escuelas Pías y dedicó su vida a la enseñanza, la oración y la caridad.
+      </p>
+      <p>
+        Fue muy querido por la gente por su paciencia, dulzura y por la ayuda que brindaba  
+        a pobres y enfermos. La devoción a la Virgen lo acompañó siempre en su servicio como religioso escolapio.
+      </p>
+      <p>
+        Murió en Campi Salentina en 1766 y su testimonio de vida sigue siendo un ejemplo  
+        de humildad, servicio y amor a los demás.
+      </p>
+    </section>
+
+    <!-- BOTÓN PARA JUGAR -->
+    <section id="jugar-trivia">
+      <h2>¿Cuánto sabés sobre San Pompilio?</h2>
+      <button id="abrirTrivia">Comenzar Trivia</button>
+    </section>
+
+    <!-- MODAL -->
+    <div id="modalTrivia" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar">&times;</span>
+
+        <h2>Trivia sobre San Pompilio María Pirrotti</h2>
+
+        <form id="formTrivia">
+
+          <p><strong>1.</strong> ¿Dónde nació San Pompilio María Pirrotti?</p>
+          <label><input type="radio" name="p1" value="Montecalvo Irpino"> Montecalvo Irpino</label><br>
+          <label><input type="radio" name="p1" value="Roma"> Roma</label><br>
+          <label><input type="radio" name="p1" value="Nápoles"> Nápoles</label><br><br>
+
+          <p><strong>2.</strong> ¿En qué año nació?</p>
+          <label><input type="radio" name="p2" value="1710"> 1710</label><br>
+          <label><input type="radio" name="p2" value="1720"> 1720</label><br>
+          <label><input type="radio" name="p2" value="1735"> 1735</label><br><br>
+
+          <p><strong>3.</strong> ¿A qué congregación pertenecía?</p>
+          <label><input type="radio" name="p3" value="Franciscanos"> Franciscanos</label><br>
+          <label><input type="radio" name="p3" value="Escuelas Pías"> Escuelas Pías</label><br>
+          <label><input type="radio" name="p3" value="Dominicos"> Dominicos</label><br><br>
+
+          <p><strong>4.</strong> ¿Qué virtud se destaca especialmente en su vida?</p>
+          <label><input type="radio" name="p4" value="Obediencia"> Obediencia</label><br>
+          <label><input type="radio" name="p4" value="Caridad"> Caridad</label><br>
+          <label><input type="radio" name="p4" value="Pobreza"> Pobreza</label><br><br>
+
+          <p><strong>5.</strong> ¿Dónde murió San Pompilio?</p>
+          <label><input type="radio" name="p5" value="Campi Salentina"> Campi Salentina</label><br>
+          <label><input type="radio" name="p5" value="Turín"> Turín</label><br>
+          <label><input type="radio" name="p5" value="Florencia"> Florencia</label><br><br>
+
+          <button type="submit">Enviar respuestas</button>
+        </form>
+
+        <div id="resultado"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SCRIPT -->
+  <script>
+    const modal = document.getElementById("modalTrivia");
+    const btnAbrir = document.getElementById("abrirTrivia");
+    const btnCerrar = document.querySelector(".cerrar");
+
+    btnAbrir.onclick = () => { modal.style.display = "block"; };
+    btnCerrar.onclick = () => { modal.style.display = "none"; };
+
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+
+    document.getElementById("formTrivia").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let puntaje = 0;
+      let salida = "";
+
+      function revisar(num, correcta) {
+        const seleccion = document.querySelector(`input[name="p${num}"]:checked`);
+        if (seleccion) {
+          if (seleccion.value === correcta) {
+            puntaje++;
+            salida += `<p class="correcta">${num}. Correcta ✔️</p>`;
+          } else {
+            salida += `<p class="incorrecta">${num}. Incorrecta ❌ (Correcta: ${correcta})</p>`;
+          }
+        } else {
+          salida += `<p class="incorrecta">${num}. No respondida ❌ (Correcta: ${correcta})</p>`;
+        }
+      }
+
+      revisar(1, "Montecalvo Irpino");
+      revisar(2, "1710");
+      revisar(3, "Escuelas Pías");
+      revisar(4, "Caridad");
+      revisar(5, "Campi Salentina");
+
+      salida += `<h4>Puntaje final: ${puntaje} de 5</h4>`;
+
+      if (puntaje === 5) salida += "<p>¡Excelente trabajo!</p>";
+      else if (puntaje >= 3) salida += "<p>Muy bien, conocés bastante sobre San Pompilio.</p>";
+      else salida += "<p>Podés repasar un poco más.</p>";
+
+      document.getElementById("resultado").innerHTML = salida;
+    });
+  </script>
+
+</body>
+</html>
